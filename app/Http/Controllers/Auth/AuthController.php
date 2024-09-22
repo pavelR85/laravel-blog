@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -71,6 +72,7 @@ class AuthController extends Controller
         $user = $this->create($data);
 
         Auth::login($user);
+        event(new Registered($user));
 
         return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
     }
