@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('/')
                 ->withSuccess('You have Successfully loggedin');
         }
 
@@ -70,6 +70,8 @@ class AuthController extends Controller
 
         $data = $request->all();
         $user = $this->create($data);
+        //verify user on register
+        $user->markEmailAsVerified();
 
         Auth::login($user);
         event(new Registered($user));

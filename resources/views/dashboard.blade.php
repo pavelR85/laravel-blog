@@ -11,6 +11,7 @@
 <main>
     <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
+
             <div class="row">
                 <div class="col-md-1">
                     <a class="dropdown-item" href="{{ route('logout') }}"
