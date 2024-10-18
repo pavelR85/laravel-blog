@@ -3,6 +3,7 @@
 <head>
     <title>Simple Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style type="text/css">
         @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
@@ -296,14 +297,15 @@
             </div>
         </div>
     </nav>
+    <section class="bg-light py-3 py-md-5">
+        <div class="container">
 
-    <main class="py-4">
+{{--    <main class="py-4">--}}
         @yield('content')
         <h2>All posts</h2>
-        @guest
-        @else
+            @auth
             <button onclick="addPost();">Add new Post</button>
-        @endguest
+            @endisset
         <div id="content-container"></div>
         @guest
         @else
@@ -320,7 +322,9 @@
                 <button onclick="save()">Save</button>
             </div>
         @endguest
-    </main>
+{{--    </main>--}}
+        </div>
+    </section>
 </div>
 
 </body>
